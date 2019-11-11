@@ -1,0 +1,11 @@
+Package: agrins
+Type: Package
+Title: Agricultural Insurance functions
+Version: 0.1
+Date: 2019-06-10
+Depends: raster, terra
+Author: Authors
+Maintainer: <r.hijmans@gmail.com>
+Description: Functions to help in designing and analyzing agricultural insurance programs. And more.
+License: GPL (>=3)
+
