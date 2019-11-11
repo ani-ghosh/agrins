@@ -133,7 +133,12 @@ data_ibli <- function(name, path) {
 }
 
 
-data_rice <- function(name, path) {
+data_rice <- function(name) {
+	.get_data(name, "rice")
+}
+
+
+.data_crop <- function(name, path) {
 	name <- tolower(name)
 	if (name %in% c("xxxcrop_ref")) {
 		.get_shp(name, "crop")	
