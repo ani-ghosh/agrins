@@ -12,16 +12,16 @@ utility <- function(income, rho, scale=FALSE) {
 	u
 }
 
-cert_equiv <- function(expected_utility, rho){
+ce_utility <- function(utility, rho){
 	if (rho == 1) { 
-		exp (expected_utility)
+		exp (utility)
 	} else {
-		((1-rho) * expected_utility) ^ (1/(1-rho))
+		((1-rho) * utility) ^ (1/(1-rho))
 	}
 }
 
 
-cert_equiv_income <- function(income, rho){
+ce_income <- function(income, rho){
     income <- na.omit(pmax(0, income))
     if (rho==1) {
         mean(income)
@@ -29,4 +29,10 @@ cert_equiv_income <- function(income, rho){
         exputil <- mean((income ^ (1 - rho)) / (1 - rho))
         ((1-rho) * exputil) ^ (1/(1-rho))
     }
+}
+
+
+mqs <- function(ce_insured, ce_not_insured) {
+   m = sign(ce_insured - ce_not_insured)
+   c("bad", "neutral", "good")[m+2]
 }
