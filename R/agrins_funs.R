@@ -1,5 +1,8 @@
 
 utility <- function(income, rho, scale=FALSE) {
+
+	income <- pmax(0, income)
+	
 	if (rho==1) {
 		u <- log(income)
 	} else {
@@ -13,22 +16,19 @@ utility <- function(income, rho, scale=FALSE) {
 }
 
 ce_utility <- function(utility, rho){
+	u <- mean(utility)
 	if (rho == 1) { 
-		exp (utility)
+		exp(u)
 	} else {
-		((1-rho) * utility) ^ (1/(1-rho))
+		((1-rho) * u) ^ (1/(1-rho))
 	}
 }
 
 
+
 ce_income <- function(income, rho){
-    income <- na.omit(pmax(0, income))
-    if (rho==1) {
-        mean(income)
-    } else {
-        exputil <- mean((income ^ (1 - rho)) / (1 - rho))
-        ((1-rho) * exputil) ^ (1/(1-rho))
-    }
+	u <- utility(income, rho, scale=FALSE)
+	ce_utility(u, rho)
 }
 
 
